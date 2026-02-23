@@ -9,7 +9,7 @@ Standard library for Supabase Edge Functions. Provides production-tested, reusab
 | [`@supabase-edge-toolkit/errors`](./packages/errors/) | 0.1.0 | Standardized error/success responses, CORS, error codes, exception converter |
 | [`@supabase-edge-toolkit/validation`](./packages/validation/) | 0.1.0 | Schema validation with Zod, request/query/header helpers |
 | `@supabase-edge-toolkit/auth` | _coming soon_ | JWT verification, auth middleware |
-| `@supabase-edge-toolkit/resilience` | _coming soon_ | Retry, circuit breaker, timeout patterns |
+| [`@supabase-edge-toolkit/resilience`](./packages/resilience/) | 0.1.0 | Timeout, circuit breaker, retry with exponential backoff |
 | [`@supabase-edge-toolkit/logger`](./packages/logger/) | 0.1.0 | Structured JSON logging for edge functions |
 
 ## Quick Start
