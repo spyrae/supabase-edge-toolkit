@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { withRetry, RetryError, RETRY_CONFIGS } from "@supabase-edge-toolkit/resilience";
+ * import { withRetry, RetryError, RETRY_CONFIGS } from "@supa-edge-toolkit/resilience";
  *
  * const result = await withRetry(
  *   async () => {

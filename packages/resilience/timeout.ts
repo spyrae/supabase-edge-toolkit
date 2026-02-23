@@ -5,7 +5,7 @@
  *
  * @example
  * ```typescript
- * import { withTimeout, fetchWithTimeout, TimeoutError } from "@supabase-edge-toolkit/resilience";
+ * import { withTimeout, fetchWithTimeout, TimeoutError } from "@supa-edge-toolkit/resilience";
  *
  * // Wrap any async operation
  * const result = await withTimeout(someAsyncOperation(), 10000, "operation-name");

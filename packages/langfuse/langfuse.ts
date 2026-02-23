@@ -7,7 +7,7 @@
  *
  * @example
  * ```typescript
- * import { getLangfusePrompt, compilePrompt } from "@supabase-edge-toolkit/langfuse";
+ * import { getLangfusePrompt, compilePrompt } from "@supa-edge-toolkit/langfuse";
  *
  * const config = {
  *   host: Deno.env.get("LANGFUSE_URL")!,

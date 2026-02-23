@@ -1,4 +1,4 @@
-# @supabase-edge-toolkit/auth
+# @supa-edge-toolkit/auth
 
 JWT auth middleware for Supabase Edge Functions with cached CryptoKey and secure
 test mode.
@@ -11,13 +11,13 @@ import {
   verifyCronSecret,
   verifyServiceRole,
   verifyUserToken,
-} from "jsr:@supabase-edge-toolkit/auth";
+} from "jsr:@supa-edge-toolkit/auth";
 ```
 
 ## Quick Start
 
 ```typescript
-import { AuthError, verifyUserToken } from "@supabase-edge-toolkit/auth";
+import { AuthError, verifyUserToken } from "@supa-edge-toolkit/auth";
 
 Deno.serve(async (req) => {
   try {

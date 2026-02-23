@@ -8,13 +8,13 @@ Built from real-world experience running 76 edge functions in production. Each m
 
 | Package | Description | Install |
 |---------|-------------|---------|
-| [`errors`](./packages/errors/) | Error/success responses, CORS, error codes, exception converter | `jsr:@supabase-edge-toolkit/errors` |
-| [`validation`](./packages/validation/) | Schema validation with Zod, request/query/header parsing | `jsr:@supabase-edge-toolkit/validation` |
-| [`auth`](./packages/auth/) | JWT verification, auth middleware, secure test mode | `jsr:@supabase-edge-toolkit/auth` |
-| [`resilience`](./packages/resilience/) | Timeout, circuit breaker, retry with exponential backoff | `jsr:@supabase-edge-toolkit/resilience` |
-| [`logger`](./packages/logger/) | Structured JSON logging with request context | `jsr:@supabase-edge-toolkit/logger` |
-| [`testing`](./packages/testing/) | MockDBState, PostgREST emulator, mock fetch, assertions | `jsr:@supabase-edge-toolkit/testing` |
-| [`langfuse`](./packages/langfuse/) | Lightweight Langfuse prompt fetcher for Deno | `jsr:@supabase-edge-toolkit/langfuse` |
+| [`errors`](./packages/errors/) | Error/success responses, CORS, error codes, exception converter | `jsr:@supa-edge-toolkit/errors` |
+| [`validation`](./packages/validation/) | Schema validation with Zod, request/query/header parsing | `jsr:@supa-edge-toolkit/validation` |
+| [`auth`](./packages/auth/) | JWT verification, auth middleware, secure test mode | `jsr:@supa-edge-toolkit/auth` |
+| [`resilience`](./packages/resilience/) | Timeout, circuit breaker, retry with exponential backoff | `jsr:@supa-edge-toolkit/resilience` |
+| [`logger`](./packages/logger/) | Structured JSON logging with request context | `jsr:@supa-edge-toolkit/logger` |
+| [`testing`](./packages/testing/) | MockDBState, PostgREST emulator, mock fetch, assertions | `jsr:@supa-edge-toolkit/testing` |
+| [`langfuse`](./packages/langfuse/) | Lightweight Langfuse prompt fetcher for Deno | `jsr:@supa-edge-toolkit/langfuse` |
 
 All packages are **v0.1.0**, MIT licensed, with full test coverage.
 
@@ -28,7 +28,7 @@ import {
   createSuccessResponse,
   errorToResponse,
   validationError,
-} from "jsr:@supabase-edge-toolkit/errors";
+} from "jsr:@supa-edge-toolkit/errors";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return createCorsResponse();
@@ -48,7 +48,7 @@ Deno.serve(async (req) => {
 ### Authentication
 
 ```typescript
-import { AuthError, verifyUserToken } from "jsr:@supabase-edge-toolkit/auth";
+import { AuthError, verifyUserToken } from "jsr:@supa-edge-toolkit/auth";
 
 Deno.serve(async (req) => {
   try {
@@ -67,7 +67,7 @@ Deno.serve(async (req) => {
 
 ```typescript
 import { z } from "npm:zod";
-import { parseRequestBody } from "jsr:@supabase-edge-toolkit/validation";
+import { parseRequestBody } from "jsr:@supa-edge-toolkit/validation";
 
 Deno.serve(async (req) => {
   const schema = z.object({
@@ -83,7 +83,7 @@ Deno.serve(async (req) => {
 ### Resilience
 
 ```typescript
-import { resilientFetch } from "jsr:@supabase-edge-toolkit/resilience";
+import { resilientFetch } from "jsr:@supa-edge-toolkit/resilience";
 
 // Fetch with timeout (5s), retry (3 attempts), and circuit breaker
 const response = await resilientFetch("https://api.example.com/data", {
@@ -96,7 +96,7 @@ const response = await resilientFetch("https://api.example.com/data", {
 ### Logging
 
 ```typescript
-import { createLogger } from "jsr:@supabase-edge-toolkit/logger";
+import { createLogger } from "jsr:@supa-edge-toolkit/logger";
 
 const logger = createLogger("my-function");
 logger.info("Processing request", { userId: "123", action: "create" });
@@ -109,7 +109,7 @@ logger.info("Processing request", { userId: "123", action: "create" });
 import {
   assertFetchCount,
   createTestContext,
-} from "jsr:@supabase-edge-toolkit/testing";
+} from "jsr:@supa-edge-toolkit/testing";
 
 Deno.test("my edge function", async () => {
   const ctx = createTestContext({
@@ -135,7 +135,7 @@ Deno.test("my edge function", async () => {
 import {
   compilePrompt,
   getLangfusePrompt,
-} from "jsr:@supabase-edge-toolkit/langfuse";
+} from "jsr:@supa-edge-toolkit/langfuse";
 
 const config = {
   host: Deno.env.get("LANGFUSE_URL")!,

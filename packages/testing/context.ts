@@ -9,7 +9,7 @@
  *
  * @example
  * ```typescript
- * import { createTestContext } from "@supabase-edge-toolkit/testing";
+ * import { createTestContext } from "@supa-edge-toolkit/testing";
  *
  * Deno.test("my edge function", async () => {
  *   const ctx = createTestContext({

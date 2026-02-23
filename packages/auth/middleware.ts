@@ -8,7 +8,7 @@
  *
  * @example
  * ```typescript
- * import { verifyUserToken, AuthError } from "@supabase-edge-toolkit/auth";
+ * import { verifyUserToken, AuthError } from "@supa-edge-toolkit/auth";
  *
  * try {
  *   const { userId } = await verifyUserToken(req);

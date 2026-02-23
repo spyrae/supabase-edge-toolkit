@@ -1,5 +1,5 @@
 {
-  "name": "@supabase-edge-toolkit/logger",
+  "name": "@supa-edge-toolkit/logger",
   "version": "0.1.0",
   "license": "MIT",
   "exports": "./mod.ts",

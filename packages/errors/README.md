@@ -1,4 +1,4 @@
-# @supabase-edge-toolkit/errors
+# @supa-edge-toolkit/errors
 
 Standardized error and success response handling for Supabase Edge Functions.
 Zero dependencies.
@@ -11,7 +11,7 @@ import {
   createSuccessResponse,
   ErrorCodes,
   errorToResponse,
-} from "jsr:@supabase-edge-toolkit/errors";
+} from "jsr:@supa-edge-toolkit/errors";
 ```
 
 ## API
@@ -91,7 +91,7 @@ try {
 ### CORS Configuration
 
 ```typescript
-import { corsHeaders, createCorsHeaders } from "@supabase-edge-toolkit/errors";
+import { corsHeaders, createCorsHeaders } from "@supa-edge-toolkit/errors";
 
 // Default headers (origin: *, standard headers/methods)
 const headers = corsHeaders;

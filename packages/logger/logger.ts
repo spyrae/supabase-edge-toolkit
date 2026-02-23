@@ -4,7 +4,7 @@
  * Provides JSON-formatted logs with consistent structure for Grafana/Loki analysis.
  *
  * @example
- * import { createLogger } from "@supabase-edge-toolkit/logger";
+ * import { createLogger } from "@supa-edge-toolkit/logger";
  *
  * const logger = createLogger("my-function", requestId);
  *

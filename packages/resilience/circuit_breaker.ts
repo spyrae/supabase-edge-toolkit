@@ -16,7 +16,7 @@
  *
  * @example
  * ```typescript
- * import { CircuitBreaker, CircuitBreakerOpenError } from "@supabase-edge-toolkit/resilience";
+ * import { CircuitBreaker, CircuitBreakerOpenError } from "@supa-edge-toolkit/resilience";
  *
  * const breaker = CircuitBreaker.getOrCreate("my-service");
  *

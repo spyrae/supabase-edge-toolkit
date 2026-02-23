@@ -1,5 +1,5 @@
 /**
- * @supabase-edge-toolkit/validation
+ * @supa-edge-toolkit/validation
  *
  * Request validation utilities for Supabase Edge Functions.
  * Provides helpers for validating request bodies, query parameters,
@@ -10,7 +10,7 @@
  *   validateRequest,
  *   commonSchemas,
  *   z,
- * } from "@supabase-edge-toolkit/validation";
+ * } from "@supa-edge-toolkit/validation";
  *
  * const MySchema = z.object({
  *   email: commonSchemas.email,

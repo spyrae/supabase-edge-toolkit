@@ -1,4 +1,4 @@
-# @supabase-edge-toolkit/validation
+# @supa-edge-toolkit/validation
 
 Request validation utilities for Supabase Edge Functions using
 [Zod](https://zod.dev).
@@ -10,7 +10,7 @@ import {
   commonSchemas,
   validateRequest,
   z,
-} from "jsr:@supabase-edge-toolkit/validation";
+} from "jsr:@supa-edge-toolkit/validation";
 ```
 
 ## Quick Start
@@ -20,11 +20,11 @@ import {
   commonSchemas,
   validateRequest,
   z,
-} from "@supabase-edge-toolkit/validation";
+} from "@supa-edge-toolkit/validation";
 import {
   createCorsResponse,
   errorToResponse,
-} from "@supabase-edge-toolkit/errors";
+} from "@supa-edge-toolkit/errors";
 
 const CreateUserSchema = z.object({
   email: commonSchemas.email,
@@ -164,7 +164,7 @@ This package re-exports `z`, `ZodError`, and `ZodSchema` from Zod for
 convenience:
 
 ```typescript
-import { z, ZodError } from "@supabase-edge-toolkit/validation";
+import { z, ZodError } from "@supa-edge-toolkit/validation";
 ```
 
 ## License

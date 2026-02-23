@@ -1,5 +1,5 @@
 {
-  "name": "@supabase-edge-toolkit/resilience",
+  "name": "@supa-edge-toolkit/resilience",
   "version": "0.1.0",
   "license": "MIT",
   "exports": "./mod.ts",

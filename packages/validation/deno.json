@@ -1,5 +1,5 @@
 {
-  "name": "@supabase-edge-toolkit/validation",
+  "name": "@supa-edge-toolkit/validation",
   "version": "0.1.0",
   "license": "MIT",
   "exports": "./mod.ts",

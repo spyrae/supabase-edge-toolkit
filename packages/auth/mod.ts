@@ -1,5 +1,5 @@
 /**
- * @supabase-edge-toolkit/auth
+ * @supa-edge-toolkit/auth
  *
  * JWT auth middleware for Supabase Edge Functions.
  * Provides user token verification, service role validation,
@@ -7,7 +7,7 @@
  *
  * @example User-facing function
  * ```typescript
- * import { verifyUserToken, AuthError } from "@supabase-edge-toolkit/auth";
+ * import { verifyUserToken, AuthError } from "@supa-edge-toolkit/auth";
  *
  * Deno.serve(async (req) => {
  *   try {
@@ -23,14 +23,14 @@
  *
  * @example Internal function (service role)
  * ```typescript
- * import { verifyServiceRole } from "@supabase-edge-toolkit/auth";
+ * import { verifyServiceRole } from "@supa-edge-toolkit/auth";
  *
  * await verifyServiceRole(req);
  * ```
  *
  * @example Cron job
  * ```typescript
- * import { verifyCronSecret } from "@supabase-edge-toolkit/auth";
+ * import { verifyCronSecret } from "@supa-edge-toolkit/auth";
  *
  * await verifyCronSecret(req);
  * ```

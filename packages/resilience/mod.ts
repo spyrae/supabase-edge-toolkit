@@ -1,12 +1,12 @@
 /**
- * @supabase-edge-toolkit/resilience
+ * @supa-edge-toolkit/resilience
  *
  * Resilience toolkit for Supabase Edge Functions.
  * Provides timeout handling, circuit breaker, and retry with exponential backoff.
  *
  * @example Basic timeout
  * ```typescript
- * import { fetchWithTimeout, TimeoutError } from "@supabase-edge-toolkit/resilience";
+ * import { fetchWithTimeout, TimeoutError } from "@supa-edge-toolkit/resilience";
  *
  * try {
  *   const response = await fetchWithTimeout(url, { method: "GET" }, 5000);
@@ -19,7 +19,7 @@
  *
  * @example Circuit breaker
  * ```typescript
- * import { CircuitBreaker } from "@supabase-edge-toolkit/resilience";
+ * import { CircuitBreaker } from "@supa-edge-toolkit/resilience";
  *
  * const breaker = CircuitBreaker.forExternalApi("my-service");
  * const result = await breaker.call(async () => {
@@ -29,7 +29,7 @@
  *
  * @example Retry with exponential backoff
  * ```typescript
- * import { withRetry, RETRY_CONFIGS } from "@supabase-edge-toolkit/resilience";
+ * import { withRetry, RETRY_CONFIGS } from "@supa-edge-toolkit/resilience";
  *
  * const data = await withRetry(
  *   async () => {
@@ -43,7 +43,7 @@
  *
  * @example Combined: resilientFetch
  * ```typescript
- * import { resilientFetch, CIRCUIT_BREAKER_CONFIGS, RETRY_CONFIGS } from "@supabase-edge-toolkit/resilience";
+ * import { resilientFetch, CIRCUIT_BREAKER_CONFIGS, RETRY_CONFIGS } from "@supa-edge-toolkit/resilience";
  *
  * const response = await resilientFetch(url, {
  *   method: "GET",

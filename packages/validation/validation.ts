@@ -5,7 +5,7 @@
  * and headers using Zod schemas with automatic error response generation.
  *
  * @example
- * import { validateRequest, commonSchemas, z } from "@supabase-edge-toolkit/validation";
+ * import { validateRequest, commonSchemas, z } from "@supa-edge-toolkit/validation";
  *
  * const MySchema = z.object({
  *   email: commonSchemas.email,
@@ -25,7 +25,7 @@ import {
   createErrorResponse,
   ErrorCodes,
   validationError,
-} from "@supabase-edge-toolkit/errors";
+} from "@supa-edge-toolkit/errors";
 
 // =============================================================================
 // Types

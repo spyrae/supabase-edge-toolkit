@@ -1,5 +1,5 @@
 /**
- * @supabase-edge-toolkit/errors
+ * @supa-edge-toolkit/errors
  *
  * Standardized error handling for Supabase Edge Functions.
  * Provides consistent error/success response format, CORS support,
@@ -12,7 +12,7 @@
  *   createSuccessResponse,
  *   validationError,
  *   errorToResponse,
- * } from "@supabase-edge-toolkit/errors";
+ * } from "@supa-edge-toolkit/errors";
  *
  * // Simple error
  * return createErrorResponse(ErrorCodes.VALIDATION_ERROR, "Invalid input");

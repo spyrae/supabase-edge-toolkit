@@ -1,4 +1,4 @@
-# @supabase-edge-toolkit/testing
+# @supa-edge-toolkit/testing
 
 Test utilities for Supabase Edge Functions: in-memory database, PostgREST
 protocol emulator, mock fetch with URL routing, and assertion helpers.
@@ -10,7 +10,7 @@ import {
   assertFetchCount,
   createTestContext,
   MockDBState,
-} from "jsr:@supabase-edge-toolkit/testing";
+} from "jsr:@supa-edge-toolkit/testing";
 ```
 
 ## Quick Start
@@ -19,7 +19,7 @@ import {
 import {
   assertFetchCount,
   createTestContext,
-} from "@supabase-edge-toolkit/testing";
+} from "@supa-edge-toolkit/testing";
 import { afterEach, describe, it } from "@std/testing/bdd";
 import { assertEquals } from "@std/assert";
 
@@ -159,7 +159,7 @@ import {
   assertNotFetched,
   findFetchCalls,
   getFetchBody,
-} from "@supabase-edge-toolkit/testing";
+} from "@supa-edge-toolkit/testing";
 
 // Find calls matching a pattern
 const calls = findFetchCalls(ctx.fetchLog, "/rest/v1/users");
@@ -182,7 +182,7 @@ import {
   restoreEnv,
   setupTestEnv,
   SUPABASE_TEST_ENV,
-} from "@supabase-edge-toolkit/testing";
+} from "@supa-edge-toolkit/testing";
 
 // Set Supabase test defaults + custom vars
 const original = setupTestEnv({ MY_API_KEY: "test" });
@@ -207,7 +207,7 @@ import {
   extractTableFromUrl,
   parsePostgrestFilters,
   parsePostgrestOptions,
-} from "@supabase-edge-toolkit/testing";
+} from "@supa-edge-toolkit/testing";
 
 extractTableFromUrl("/rest/v1/users?id=eq.1"); // "users"
 extractRpcFunctionFromUrl("/rest/v1/rpc/get_stats"); // "get_stats"

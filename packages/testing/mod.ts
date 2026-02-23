@@ -1,5 +1,5 @@
 /**
- * @module @supabase-edge-toolkit/testing
+ * @module @supa-edge-toolkit/testing
  *
  * Test utilities for Supabase Edge Functions: in-memory database,
  * PostgREST protocol emulator, mock fetch with URL routing,

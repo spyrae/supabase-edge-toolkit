@@ -1,4 +1,4 @@
-# @supabase-edge-toolkit/logger
+# @supa-edge-toolkit/logger
 
 Structured JSON logger for Supabase Edge Functions, compatible with
 Grafana/Loki.
@@ -6,7 +6,7 @@ Grafana/Loki.
 ## Installation
 
 ```typescript
-import { createLogger, getRequestId } from "jsr:@supabase-edge-toolkit/logger";
+import { createLogger, getRequestId } from "jsr:@supa-edge-toolkit/logger";
 ```
 
 ## Quick Start
@@ -17,7 +17,7 @@ import {
   getRequestId,
   logRequestEnd,
   logRequestStart,
-} from "@supabase-edge-toolkit/logger";
+} from "@supa-edge-toolkit/logger";
 
 Deno.serve(async (req) => {
   const requestId = getRequestId(req);

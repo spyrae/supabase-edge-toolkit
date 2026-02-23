@@ -1,5 +1,5 @@
 /**
- * @module @supabase-edge-toolkit/langfuse
+ * @module @supa-edge-toolkit/langfuse
  *
  * Lightweight Langfuse prompt client for Deno — fetch prompts
  * and compile templates with {{variable}} interpolation.

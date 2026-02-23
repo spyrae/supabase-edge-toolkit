@@ -1,4 +1,4 @@
-# @supabase-edge-toolkit/langfuse
+# @supa-edge-toolkit/langfuse
 
 Lightweight Langfuse prompt client for Deno. Fetch prompts and compile templates
 with `{{variable}}` interpolation. Zero dependencies.
@@ -9,7 +9,7 @@ with `{{variable}}` interpolation. Zero dependencies.
 import {
   compilePrompt,
   getLangfusePrompt,
-} from "jsr:@supabase-edge-toolkit/langfuse";
+} from "jsr:@supa-edge-toolkit/langfuse";
 ```
 
 ## Quick Start
@@ -18,7 +18,7 @@ import {
 import {
   compilePrompt,
   getLangfusePrompt,
-} from "@supabase-edge-toolkit/langfuse";
+} from "@supa-edge-toolkit/langfuse";
 
 const config = {
   host: Deno.env.get("LANGFUSE_URL")!,
