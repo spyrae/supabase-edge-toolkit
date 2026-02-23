@@ -11,6 +11,7 @@ Standard library for Supabase Edge Functions. Provides production-tested, reusab
 | [`@supabase-edge-toolkit/auth`](./packages/auth/) | 0.1.0 | JWT verification, auth middleware, test mode |
 | [`@supabase-edge-toolkit/resilience`](./packages/resilience/) | 0.1.0 | Timeout, circuit breaker, retry with exponential backoff |
 | [`@supabase-edge-toolkit/logger`](./packages/logger/) | 0.1.0 | Structured JSON logging for edge functions |
+| [`@supabase-edge-toolkit/testing`](./packages/testing/) | 0.1.0 | MockDBState, PostgREST emulator, mock fetch, assertion helpers |
 
 ## Quick Start
 
