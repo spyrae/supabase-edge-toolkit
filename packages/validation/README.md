@@ -21,10 +21,7 @@ import {
   validateRequest,
   z,
 } from "@supa-edge-toolkit/validation";
-import {
-  createCorsResponse,
-  errorToResponse,
-} from "@supa-edge-toolkit/errors";
+import { createCorsResponse, errorToResponse } from "@supa-edge-toolkit/errors";
 
 const CreateUserSchema = z.object({
   email: commonSchemas.email,

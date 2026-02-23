@@ -15,10 +15,7 @@ import {
 ## Quick Start
 
 ```typescript
-import {
-  compilePrompt,
-  getLangfusePrompt,
-} from "@supa-edge-toolkit/langfuse";
+import { compilePrompt, getLangfusePrompt } from "@supa-edge-toolkit/langfuse";
 
 const config = {
   host: Deno.env.get("LANGFUSE_URL")!,
