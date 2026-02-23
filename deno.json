@@ -1,5 +1,5 @@
 {
-  "workspace": ["./packages/errors", "./packages/validation"],
+  "workspace": ["./packages/errors", "./packages/validation", "./packages/logger"],
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.0"
   },
