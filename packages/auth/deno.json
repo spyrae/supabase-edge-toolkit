@@ -1,0 +1,13 @@
+{
+  "name": "@supabase-edge-toolkit/auth",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
+  "imports": {
+    "djwt": "jsr:@zaubrik/djwt@^3.0.2"
+  },
+  "publish": {
+    "include": ["*.ts", "README.md", "LICENSE"],
+    "exclude": ["*_test.ts"]
+  }
+}
