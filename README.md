@@ -1,48 +1,43 @@
 # supabase-edge-toolkit
 
-Standard library for Supabase Edge Functions. Provides production-tested, reusable modules for error handling, validation, authentication, resilience, and logging.
+Production-tested standard library for Supabase Edge Functions. Modular, zero-config, Deno-native.
+
+Built from real-world experience running 76 edge functions in production. Each module is independent — install only what you need.
 
 ## Packages
 
-| Package | Version | Description |
-|---------|---------|-------------|
-| [`@supabase-edge-toolkit/errors`](./packages/errors/) | 0.1.0 | Standardized error/success responses, CORS, error codes, exception converter |
-| [`@supabase-edge-toolkit/validation`](./packages/validation/) | 0.1.0 | Schema validation with Zod, request/query/header helpers |
-| [`@supabase-edge-toolkit/auth`](./packages/auth/) | 0.1.0 | JWT verification, auth middleware, test mode |
-| [`@supabase-edge-toolkit/resilience`](./packages/resilience/) | 0.1.0 | Timeout, circuit breaker, retry with exponential backoff |
-| [`@supabase-edge-toolkit/logger`](./packages/logger/) | 0.1.0 | Structured JSON logging for edge functions |
-| [`@supabase-edge-toolkit/testing`](./packages/testing/) | 0.1.0 | MockDBState, PostgREST emulator, mock fetch, assertion helpers |
-| [`@supabase-edge-toolkit/langfuse`](./packages/langfuse/) | 0.1.0 | Lightweight Langfuse prompt fetcher and compiler for Deno |
+| Package | Description | Install |
+|---------|-------------|---------|
+| [`errors`](./packages/errors/) | Error/success responses, CORS, error codes, exception converter | `jsr:@supabase-edge-toolkit/errors` |
+| [`validation`](./packages/validation/) | Schema validation with Zod, request/query/header parsing | `jsr:@supabase-edge-toolkit/validation` |
+| [`auth`](./packages/auth/) | JWT verification, auth middleware, secure test mode | `jsr:@supabase-edge-toolkit/auth` |
+| [`resilience`](./packages/resilience/) | Timeout, circuit breaker, retry with exponential backoff | `jsr:@supabase-edge-toolkit/resilience` |
+| [`logger`](./packages/logger/) | Structured JSON logging with request context | `jsr:@supabase-edge-toolkit/logger` |
+| [`testing`](./packages/testing/) | MockDBState, PostgREST emulator, mock fetch, assertions | `jsr:@supabase-edge-toolkit/testing` |
+| [`langfuse`](./packages/langfuse/) | Lightweight Langfuse prompt fetcher for Deno | `jsr:@supabase-edge-toolkit/langfuse` |
+
+All packages are **v0.1.0**, MIT licensed, with full test coverage.
 
 ## Quick Start
 
+### Error Handling
+
 ```typescript
 import {
-  ErrorCodes,
-  createErrorResponse,
-  createSuccessResponse,
   createCorsResponse,
+  createSuccessResponse,
   errorToResponse,
   validationError,
 } from "jsr:@supabase-edge-toolkit/errors";
 
 Deno.serve(async (req) => {
-  // CORS preflight
-  if (req.method === "OPTIONS") {
-    return createCorsResponse();
-  }
+  if (req.method === "OPTIONS") return createCorsResponse();
 
   try {
     const body = await req.json();
-
-    // Validation
     if (!body.email) {
-      return validationError("Missing required fields", {
-        email: "Required",
-      });
+      return validationError("Missing required fields", { email: "Required" });
     }
-
-    // Success
     return createSuccessResponse({ id: "123", email: body.email });
   } catch (error) {
     return errorToResponse(error);
@@ -50,13 +45,136 @@ Deno.serve(async (req) => {
 });
 ```
 
+### Authentication
+
+```typescript
+import { AuthError, verifyUserToken } from "jsr:@supabase-edge-toolkit/auth";
+
+Deno.serve(async (req) => {
+  try {
+    const { userId, role } = await verifyUserToken(req);
+    return new Response(JSON.stringify({ userId, role }));
+  } catch (error) {
+    if (error instanceof AuthError) {
+      return new Response(error.message, { status: error.statusCode });
+    }
+    throw error;
+  }
+});
+```
+
+### Validation
+
+```typescript
+import { z } from "npm:zod";
+import { parseRequestBody } from "jsr:@supabase-edge-toolkit/validation";
+
+Deno.serve(async (req) => {
+  const schema = z.object({
+    email: z.string().email(),
+    name: z.string().min(1),
+  });
+
+  const body = await parseRequestBody(req, schema);
+  // body is typed as { email: string; name: string }
+});
+```
+
+### Resilience
+
+```typescript
+import { resilientFetch } from "jsr:@supabase-edge-toolkit/resilience";
+
+// Fetch with timeout (5s), retry (3 attempts), and circuit breaker
+const response = await resilientFetch("https://api.example.com/data", {
+  timeout: { timeoutMs: 5000 },
+  retry: { maxAttempts: 3 },
+  circuitBreaker: { failureThreshold: 5 },
+});
+```
+
+### Logging
+
+```typescript
+import { createLogger } from "jsr:@supabase-edge-toolkit/logger";
+
+const logger = createLogger("my-function");
+logger.info("Processing request", { userId: "123", action: "create" });
+// => {"timestamp":"...","level":"INFO","function":"my-function","message":"Processing request","userId":"123","action":"create"}
+```
+
+### Testing
+
+```typescript
+import {
+  assertFetchCount,
+  createTestContext,
+} from "jsr:@supabase-edge-toolkit/testing";
+
+Deno.test("my edge function", async () => {
+  const ctx = createTestContext({
+    dbSeed: { users: [{ id: "u1", name: "Alice" }] },
+  });
+
+  try {
+    // globalThis.fetch is mocked — Supabase client works against in-memory DB
+    const res = await fetch("http://localhost:54321/rest/v1/users?id=eq.u1");
+    const data = await res.json();
+
+    assertEquals(data[0].name, "Alice");
+    assertFetchCount(ctx.fetchLog, "/rest/v1/users", 1);
+  } finally {
+    ctx.cleanup();
+  }
+});
+```
+
+### Langfuse Prompts
+
+```typescript
+import {
+  compilePrompt,
+  getLangfusePrompt,
+} from "jsr:@supabase-edge-toolkit/langfuse";
+
+const config = {
+  host: Deno.env.get("LANGFUSE_URL")!,
+  publicKey: Deno.env.get("LANGFUSE_PUBLIC_KEY")!,
+  secretKey: Deno.env.get("LANGFUSE_SECRET_KEY")!,
+};
+
+const promptData = await getLangfusePrompt("my-prompt", config);
+const messages = compilePrompt(promptData, { name: "Alice" });
+```
+
+## Why This Exists
+
+Supabase Edge Functions lack a standard library. Every project ends up writing the same boilerplate:
+
+- CORS headers and error response formatting
+- JWT verification and auth middleware
+- Request body validation
+- Retry logic and timeouts for external API calls
+- Structured logging
+- Test utilities for mocking the Supabase client
+
+This toolkit extracts these patterns into tested, independent modules. Each package works standalone — no framework lock-in, no mandatory dependencies between packages.
+
+## Design Principles
+
+- **Zero coupling** — packages are independent, install only what you need
+- **Deno-native** — built for Deno runtime, published on JSR
+- **Production-tested** — extracted from a system running 76 edge functions
+- **Minimal API** — small surface area, easy to learn
+- **Type-safe** — full TypeScript with strict types, no `any`
+
 ## Development
 
 ```bash
-# Run all tests
+# Run all tests (265 test steps across 7 packages)
 deno task test
 
-# Type check
+# Type check all packages
 deno task check
 
 # Lint
@@ -64,7 +182,19 @@ deno task lint
 
 # Format
 deno task fmt
+
+# Check formatting without modifying
+deno task fmt:check
 ```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Run `deno task test` to ensure all tests pass
+4. Submit a pull request
+
+Each package has its own README with detailed API documentation.
 
 ## License
 
