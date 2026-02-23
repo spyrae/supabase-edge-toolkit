@@ -12,6 +12,7 @@ Standard library for Supabase Edge Functions. Provides production-tested, reusab
 | [`@supabase-edge-toolkit/resilience`](./packages/resilience/) | 0.1.0 | Timeout, circuit breaker, retry with exponential backoff |
 | [`@supabase-edge-toolkit/logger`](./packages/logger/) | 0.1.0 | Structured JSON logging for edge functions |
 | [`@supabase-edge-toolkit/testing`](./packages/testing/) | 0.1.0 | MockDBState, PostgREST emulator, mock fetch, assertion helpers |
+| [`@supabase-edge-toolkit/langfuse`](./packages/langfuse/) | 0.1.0 | Lightweight Langfuse prompt fetcher and compiler for Deno |
 
 ## Quick Start
 
