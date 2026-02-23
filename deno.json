@@ -1,0 +1,13 @@
+{
+  "workspace": ["./packages/errors"],
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.0"
+  },
+  "tasks": {
+    "test": "deno test --allow-env packages/",
+    "check": "deno check packages/*/mod.ts",
+    "lint": "deno lint packages/",
+    "fmt": "deno fmt packages/",
+    "fmt:check": "deno fmt --check packages/"
+  }
+}
